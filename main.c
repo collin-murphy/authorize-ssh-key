@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+//check to see if file path exists
 int checkFilePath(char *fname){
     FILE *file;
     if((file = fopen(fname, "r"))){
@@ -10,6 +11,7 @@ int checkFilePath(char *fname){
         return 0;
 }
 
+//logic after succesful user input
 void successfulArgs(char *input){
     if(checkFilePath(input) == 1)
         printf("Correct file path.\n");
