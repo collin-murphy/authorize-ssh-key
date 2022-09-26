@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 //check to see if file path exists
 int checkFilePath(char *fname){
     FILE *file;
-    if((file = fopen(fname, "r"))){
+    if(file = fopen(fname, "r")){
         fclose(file);
         return 1;
     }  
@@ -11,13 +12,36 @@ int checkFilePath(char *fname){
         return 0;
 }
 
+void getContents(char *fname){
+    FILE *file;
+    
+    if((file = fopen(fname, "r")) == NULL){
+        printf("Error opening file\n");
+
+        //exit because of null file
+        exit(1);
+    }
+
+    //TODO: read file input
+
+
+}
+
 //logic after succesful user input
 void successfulArgs(char *input){
-    if(checkFilePath(input) == 1)
+    if(checkFilePath(input) == 1){
         printf("Correct file path.\n");
-    else
+    }
+    else{
         printf("Invalid File path.\n");
+
+        //exit because of invalid path
+        exit(1);
+    }
+    
+    getContents(input);
 }
+
 
 int main(int argc, char *argv[]){
     if(argc == 2){
